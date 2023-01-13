@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import os
 import time
 
-folder_dir = "_out/"
+folder_dir = "_test_lidar/"
 
 def read_ply(path):
     cloud = o3d.io.read_point_cloud(path)
@@ -16,8 +16,7 @@ vis = o3d.visualization.Visualizer()
 vis.create_window(height=480, width=640)
 
 # initialize pointcloud instance.
-pcd = (o3d.io.read_point_cloud("_out/00022637.ply"))
-pcd2 = (o3d.io.read_point_cloud("_out/00023351.ply"))
+pcd = (o3d.io.read_point_cloud("_lidar/010670.ply"))
 
 # include it in the visualizer before non-blocking visualization.
 vis.add_geometry(pcd)
@@ -27,7 +26,7 @@ dt = 0.01
 previous_t = time.time()
 
 for pl in os.listdir(folder_dir):
-    time.sleep(0.02)
+    time.sleep(0.1)
     # check if the image ends with png
     if (pl.endswith(".ply")):
 
