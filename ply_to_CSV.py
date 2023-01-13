@@ -14,27 +14,4 @@ print(type(cloud))
 print(co_ordinates)
 DF = pd.DataFrame(co_ordinates)
 print(DF)
-# DF.to_csv("ply.csv")
-x = DF[0]
-y = DF[1]
-z = DF[2]
-
-
-ax = plt.figure().add_subplot(projection='3d')
-ax.plot(x, y, zs=0, zdir='z', label='curve in (x, y)')
-ax.scatter(x, y, zs=0, zdir='y', label='points in (x, z)')
-
-# Make legend, set axes limits and labels
-ax.legend()
-ax.set_xlim(0, 1)
-ax.set_ylim(0, 1)
-ax.set_zlim(0, 1)
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('Z')
-
-# Customize the view angle so it's easier to see that the scatter points lie
-# on the plane y=0
-ax.view_init(elev=20., azim=-35)
-
-plt.show()
+DF.to_csv("ply.csv")
