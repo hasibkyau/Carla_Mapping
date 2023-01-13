@@ -17,6 +17,7 @@ vis.create_window(height=480, width=640)
 
 # initialize pointcloud instance.
 pcd = (o3d.io.read_point_cloud("_out/00022637.ply"))
+pcd2 = (o3d.io.read_point_cloud("_out/00023351.ply"))
 
 # include it in the visualizer before non-blocking visualization.
 vis.add_geometry(pcd)
@@ -37,12 +38,17 @@ for pl in os.listdir(folder_dir):
             # o3d.visualization.draw_geometries([cloud])  # Visualize the point cloud
 
             # extending with ndarrays.
-            pcd.points.extend(np.asarray(cloud.points))
+            # pcd.points.extend(np.asarray(cloud.points))
+
+            # Updating the points
+            pcd.points = cloud.points
 
             # Updating the map
             vis.update_geometry(pcd)
-            previous_t = time.time()
+            # vis.update_geometry(cloud)
+
         # Ploting the extended points
-        keep_running = vis.poll_events()
+
         vis.update_renderer()
+        vis.poll_events()
 vis.destroy_window()
